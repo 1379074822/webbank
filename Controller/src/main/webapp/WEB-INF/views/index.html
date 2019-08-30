@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+<head>
+    <meta charset="utf-8">
+    <title>网银登陆系统</title>
+    <link rel="stylesheet" href="../../layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../layui/css/mainPage.css">
+</head>
+<body style="text-align: -webkit-center;height: 100%;overflow: scroll">
+<div hidden id="personalTranferConfirmPage">
+    <div class="layui-fluid">
+        <form class="layui-form" action="" method="post">
+            <!--付款账户-->
+            <div class="layui-form-item">
+                <label class="layui-form-label">付款账户</label>
+                <div class="layui-input-inline">
+                    <input id="personalTransferAccountConfirm" name="tranferAccountConfirm" disabled
+                           placeholder="" class="layui-input disable">
+                </div>
+            </div>
+            <!--收款账户-->
+            <div class="layui-form-item">
+                <label class="layui-form-label">收款账户</label>
+                <div class="layui-input-inline">
+                    <input id="personalReceiveAccountConfirm" name="receiveAccountConfirm" disabled
+                           placeholder="" class="layui-input disable">
+                </div>
+            </div>
+            <!--转账方式（立即/2h/1d）-->
+            <div class="layui-form-item">
+                <label class="layui-form-label">转账方式</label>
+                <div class="layui-input-inline">
+                    <input id="personalTransferTypeConfirm" name="TransferTypeConfirm" disabled
+                           placeholder="" class="layui-input disable">
+                </div>
+            </div>
+            <!--转账类型-->
+            <div class="layui-form-item">
+                <label class="layui-form-label">转账类型</label>
+                <div class="layui-input-inline">
+                    <input name="TransferTypeConfirm" disabled
+                           placeholder="行内转账" class="layui-input disable">
+                </div>
+            </div>
+            <!--用途-->
+            <div class="layui-form-item">
+                <label class="layui-form-label">用途</label>
+                <div class="layui-input-inline">
+                    <input id="personalTransferUsageConfirm" name="TransferTypeConfirm" disabled value=""
+                           placeholder="" class="layui-input disable">
+                </div>
+            </div>
+            <!--转账金额-->
+            <div class="layui-form-item">
+                <label class="layui-form-label">转账金额</label>
+                <div class="layui-input-inline">
+                    <input id="personalTransferAmountConfirm" name="TransferAmountConfirm" disabled
+                           placeholder="" class="layui-input disable">
+                </div>
+            </div>
+            <!--转账金额大写-->
+            <div class="layui-form-item">
+                <label class="layui-form-label">转账金额大写</label>
+                <div class="layui-input-inline">
+                    <input id="personalTransferAmountConfirmDX" name="TransferAmountConfirmDX" disabled
+                           placeholder="" class="layui-input disable">
+                </div>
+            </div>
+            <!--附言-->
+            <div class="layui-form-item">
+                <label class="layui-form-label">附言</label>
+                <div class="layui-input-inline">
+                    <input id="personalTransferCommentsConfirm" name="TransferConmmentsConfirm" disabled
+                           placeholder="" class="layui-input disable">
+                </div>
+            </div>
+            <!--手机验证码-->
+            <div class="layui-form-item">
+                <label class="layui-form-label">手机验证码</label>
+                <div class="layui-input-inline">
+                    <input id="personalSecurityCode" name="securityCode"
+                           placeholder="请输入验证码" class="layui-input" lay-verify="code">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input set-center" style="border: 0px;">
+                    <button id="personal-submit" lay-submit class="layui-btn"
+                            lay-filter="personalTransferSubmit">确认
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div hidden id="otherTranferConfirmPage">
+    <div class="layui-fluid">
+        <form class="layui-form" action="" method="post">
+            <!--付款账户-->
+            <div class="layui-form-item">
+                <label class="layui-form-label">付款账户</label>
+                <div class="layui-input-inline">
+                    <input id="otherTransferAccountConfirm" name="tranferAccountConfirm" disabled
+                           placeholder="" class="layui-input disable">
+                </div>
+            </div>
+            <!--收款账户-->
+            <div class="layui-form-item">
+                <label class="layui-form-label">收款账户</label>
+                <div class="layui-input-inline">
+                    <input id="otherReceiveAccountConfirm" name="receiveAccountConfirm" disabled
+                           placeholder="" class="layui-input disable">
+                </div>
+            </div>
+            <!--账户持有者名字-->
+            <div class="layui-form-item">
+                <label class="layui-form-label">账户户名</label>
+                <div class="layui-input-inline">
+                    <input id="otherAccountNameConfirm" name="receiveAccountConfirm" disabled
+                           placeholder="" class="layui-input disable">
+                </div>
+            </div>
+            <!--转账方式（立即/2h/1d）-->
+            <div class="layui-form-item">
+                <label class="layui-form-label">转账方式</label>
+                <div class="layui-input-inline">
+                    <input id="otherTransferTypeConfirm" name="TransferTypeConfirm" disabled
+                           placeholder="" class="layui-input disable">
+                </div>
+            </div>
+            <!--转账类型-->
+            <div class="layui-form-item">
+                <label class="layui-form-label">转账类型</label>
+                <div class="layui-input-inline">
+                    <input name="TransferTypeConfirm" readonly
+                           placeholder="行内转账" value="行内转账" class="layui-input disable">
+                </div>
+            </div>
+            <!--用途-->
+            <div class="layui-form-item">
+                <label class="layui-form-label">用途</label>
+                <div class="layui-input-inline">
+                    <input id="otherTransferUsageConfirm" name="TransferTypeConfirm" disabled value=""
+                           placeholder="" class="layui-input disable">
+                </div>
+            </div>
+            <!--转账金额-->
+            <div class="layui-form-item">
+                <label class="layui-form-label">转账金额</label>
+                <div class="layui-input-inline">
+                    <input id="otherTransferAmountConfirm" name="TransferAmountConfirm" disabled
+                           placeholder="" class="layui-input disable">
+                </div>
+            </div>
+            <!--转账金额大写-->
+            <div class="layui-form-item">
+                <label class="layui-form-label">转账金额大写</label>
+                <div class="layui-input-inline">
+                    <input id="otherTransferAmountConfirmDX" name="TransferAmountConfirmDX" disabled
+                           placeholder="" class="layui-input disable">
+                </div>
+            </div>
+            <!--附言-->
+            <div class="layui-form-item">
+                <label class="layui-form-label">附言</label>
+                <div class="layui-input-inline">
+                    <input id="otherTransferCommentsConfirm" name="TransferConmmentsConfirm" disabled
+                           placeholder="" class="layui-input disable">
+                </div>
+            </div>
+            <!--验证码-->
+            <div class="layui-form-item">
+                <label class="layui-form-label">手机验证码</label>
+                <div class="layui-input-inline">
+                    <input id="otherSecurityCode" name="securityCode"
+                           placeholder="请输入验证码" class="layui-input" lay-verify="code">
+                </div>
+            </div>
+            <!--确认-->
+            <div class="layui-form-item">
+                <div class="layui-input set-center" style="border: 0px;">
+                    <button id="other-submit" lay-submit class="layui-btn"
+                            lay-filter="otherTransferPageSubmit">确认
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div id="mainWrapper" style="height: inherit">
+    <div id="header">
+        <div id="left">
+            <img src="../../picture/logo.png" style="height: 35px;">
+            <img src="../../picture/20190506233048.png" style="height: 55px">
+        </div>
+        <div id="right">
+            <a id="logout" href="/quit" class="layui-icon layui-icon-username">登出</a>
+        </div>
+    </div>
+    <div id="layuiTab" lay-filter="onlineBank" class="layui-tab layui-tab-brief">
+        <ul id="dock" class="layui-tab-title">
+            <li class="layui-this">首页</li>
+            <li>账户加挂</li>
+            <li>账户列表</li>
+            <li>日志查询</li>
+            <li>转账</li>
+            <li>转账账户明细</li>
+        </ul>
+        <div id="content" class="layui-tab-content">
+            <div id="mainPage" class="layui-tab-item  layui-show">
+                <div id="roller_wrapper">
+                    <div class="layui-carousel" id="roller">
+                        <div carousel-item>
+                            <img src="../../picture/ROLLER1.png">
+                            <img src="../../picture/ROLLER2.png">
+                            <img src="../../picture/ROLLER3.png">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 条目中可以是任意内容，如：<img src=""> -->
+                <fieldset id="activities_wrapper" class="layui-elem-field cust-card">
+                    <legend>近期业务</legend>
+                    <div class="layui-field-box">
+                        <!--<div id="businessA"></div>-->
+                        <!--<div id="businessB"></div>-->
+                        <!--<div id="businessC"></div>-->
+                        <!--<div id="businessD"></div>-->
+                    </div>
+                </fieldset>
+                <fieldset id="personalPage_wrapper" class="layui-elem-field cust-card">
+                    <legend>个人信息</legend>
+                    <div class="layui-field-box">
+                        <div id="userLogo"></div>
+                    </div>
+                </fieldset>
+                <fieldset id="personalInfor_wrapper" class="layui-elem-field cust-card">
+                    <legend>账户信息</legend>
+                    <div class="layui-field-box">
+                        <div id="userCard"></div>
+                    </div>
+                </fieldset>
+
+            </div>
+            <div id="addCountPage" class="layui-tab-item">
+                <fieldset id="addCountPage_wrapper" class="layui-elem-field cust-card">
+                    <legend>请填写信息</legend>
+                    <div class="layui-field-box">
+                        <form id="addCountPage_form" class="layui-form"> <!-- 提示：如果你不想用form，你可以换成div等任何一个普通元素 -->
+                            <div class="layui-form-item">
+                                <label class="layui-form-label layui-icon">银行卡号&#xe672;</label>
+                                <div class="layui-input-block">
+                                    <input id="cardNumber" type="text" name="" placeholder="请输入卡面卡号" autocomplete="off"
+                                           class="layui-input" lay-verify="required|account">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label layui-icon">密码 &#xe678;</label>
+                                <div class="layui-input-block">
+                                    <input id="password" type="password" name="" placeholder="请输入密码" autocomplete="off"
+                                           class="layui-input" lay-verify="required|paymentpassword">
+                                </div>
+                            </div>
+
+
+                            <div class="layui-form-item">
+                                <div class="layui-input-block">
+                                    <button class="layui-btn" lay-submit lay-filter="addCount">立即提交</button>
+                                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                                </div>
+                            </div>
+                            <!-- 更多表单结构排版请移步文档左侧【页面元素-表单】一项阅览 -->
+                        </form>
+                    </div>
+                </fieldset>
+
+            </div>
+            <div id="userListPage" class="layui-tab-item">
+                <div class="list-wrapper" id="usertable">
+                    <table id="cardlist" lay-filter="cardlist-table"></table>
+                </div>
+            </div>
+            <div id="logSearchPage" class="layui-tab-item">
+                <fieldset id="LogSelectCondition_wrapper" class="layui-elem-field cust-card">
+                    <legend>筛选条件</legend>
+                    <div class="layui-field-box">
+                        <form id="LogSelectCondition_form" class="layui-form">
+                            <div class="layui-form-item">
+                                <label class="layui-form-label layui-icon">开始时间 &#xe652;</label>
+                                <div class="layui-input-block">
+                                    <input type="text" id="borrowtimebox" name="starttime" class="layui-input"
+                                           placeholder="请输入" lay-verify="required"/>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label layui-icon">截止时间 &#xe651;</label>
+                                <div class="layui-input-block">
+                                    <input type="text" id="borrowtimebox1" name="lasttime" class="layui-input"
+                                           placeholder="请输入" lay-verify="required"/>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label layui-icon">类型 &#xe60a;</label>
+                                <div class="layui-input-block">
+                                    <select id="logType" name="city" lay-verify="required">
+                                        <option value=""></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <div class="layui-input-block">
+                                    <button class="layui-btn" lay-submit lay-filter="logSearch">立即提交</button>
+                                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </fieldset>
+                <div class="list-wrapper" id="logtable">
+                    <table id="loglist" lay-filter="loglist"></table>
+                </div>
+            </div>
+            <div id="transferPage" class="layui-tab-item">
+                <div class="layui-tab">
+                    <ul id="transferDock" class="layui-tab-title">
+                        <li class="layui-this">个人转账</li>
+                        <li>他人转账</li>
+                    </ul>
+                    <div id="Transfer_wrapper" class="layui-tab-content">
+                        <div id="personalTranfer_wrapper" class="layui-tab-item layui-show">
+                            <form class="layui-form" action="">
+                                <!--付款账户-->
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">付款账户</label>
+                                    <div class="layui-input-block">
+                                        <select id="personalPayAccount" name="account" lay-verify="required"
+                                                lay-filter="personalPayAccount">
+                                            <option value=""></option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!--收款账户-->
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">收款账户</label>
+                                    <div class="layui-input-block">
+                                        <select id="personalReceiveAccount" name="account" lay-verify="required">
+                                            <option value=""></option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!--转账方式（立即/2h/1d）-->
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">转账方式</label>
+                                    <div class="layui-input-block">
+                                        <select id="personalTransferType" name="transferType" lay-verify="required">
+                                            <option value=""></option>
+                                            <option value="0">立即转账</option>
+                                            <option value="1">2小时</option>
+                                            <option value="2">隔天</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!--转账类型-->
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">转账类型</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="title" required readonly value="行内转账"
+                                               lay-verify="required" placeholder="行内转账" autocomplete="off"
+                                               class="layui-input">
+                                    </div>
+                                </div>
+                                <!--用途-->
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">用途</label>
+                                    <div class="layui-input-block">
+                                        <select id="personalTransferUsage" name="transferType" lay-verify="required">
+                                            <option value=""></option>
+                                            <option value="还款">还款</option>
+                                            <option value="缴费">缴费</option>
+                                            <option value="日常">日常</option>
+                                            <option value="其他">其他</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!--金额-->
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">转账金额</label>
+                                    <div class="layui-input-block">
+                                        <input id="personalTransferAmount" type="text" name="title"
+                                               lay-verify="required|amount" placeholder="请输入转账金额" autocomplete="off"
+                                               class="layui-input">
+                                    </div>
+                                </div>
+                                <!--交易密码-->
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">交易密码</label>
+                                    <div class="layui-input-block">
+                                        <input id="personalTransferPassWord" type="password" name="title"
+                                               lay-verify="required|paymentpassword" placeholder="请输入交易密码"
+                                               autocomplete="off"
+                                               class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">附言</label>
+                                    <div class="layui-input-block">
+                                        <input id="personalTransferComments" type="text" name="title"
+                                               placeholder="请输入附言" value="" autocomplete="off"
+                                               class="layui-input">
+                                    </div>
+                                </div>
+                                <!--确认-->
+                                <div class="layui-form-item">
+                                    <div class="layui-input-block">
+                                        <button class="layui-btn" lay-submit lay-filter="personalTransferConfirm">确认转账
+                                        </button>
+                                        <button type="reset" class="layui-btn layui-btn-primary">重置信息</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div id="otherTransfer_wrapper" class="layui-tab-item">
+                            <form class="layui-form" action="">
+                                <!--付款账户-->
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">付款账户</label>
+                                    <div class="layui-input-block">
+                                        <select id="otherPayAccount" name="account" lay-verify="required">
+                                            <option value=""></option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!--收款账户-->
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">收款账户</label>
+                                    <div class="layui-input-block">
+                                        <input id="otherReceiveAccount" type="text" name="title"
+                                               lay-verify="required|account" placeholder="请输入收款账户" autocomplete="off"
+                                               class="layui-input">
+                                    </div>
+                                </div>
+                                <!--收款人名-->
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">收款人户名</label>
+                                    <div class="layui-input-block">
+                                        <input id="otherAccountName" type="text" name="title"
+                                               lay-verify="required|name" placeholder="请输入收款人姓名" autocomplete="off"
+                                               class="layui-input">
+                                    </div>
+                                </div>
+                                <!--转账方式-->
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">转账方式</label>
+                                    <div class="layui-input-block">
+                                        <select id="otherTransferType" name="account" lay-verify="required">
+                                            <option value=""></option>
+                                            <option value="0">立即转账</option>
+                                            <option value="1">2小时</option>
+                                            <option value="2">隔天</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!--转账金额-->
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">转账金额</label>
+                                    <div class="layui-input-block">
+                                        <input id="otherTransferAmount" type="text" name="title"
+                                               lay-verify="required|amount" placeholder="请输入转账金额" autocomplete="off"
+                                               class="layui-input">
+                                    </div>
+                                </div>
+                                <!--转账类型-->
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">转账类型</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="title" required readonly lay-verify="required"
+                                               placeholder="行内转账" value="行内转账" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                                <!--用途-->
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">用途</label>
+                                    <div class="layui-input-block">
+                                        <select id="otherTransferUsage" name="transferType" lay-verify="required">
+                                            <option value=""></option>
+                                            <option value="0">还款</option>
+                                            <option value="1">缴费</option>
+                                            <option value="2">日常</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!--交易密码-->
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">交易密码</label>
+                                    <div class="layui-input-block">
+                                        <input id="otherTransferPassWord" type="password" name="title"
+                                               lay-verify="required|paymentpassword" placeholder="请输入交易密码"
+                                               autocomplete="off"
+                                               class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">附言</label>
+                                    <div class="layui-input-block">
+                                        <input id="otherTransferComments" type="text" name="title"
+                                               placeholder="请输入附言" value="" autocomplete="off"
+                                               class="layui-input">
+                                    </div>
+                                </div>
+                                <!--确认-->
+                                <div class="layui-form-item">
+                                    <div class="layui-input-block">
+                                        <button class="layui-btn" lay-submit lay-filter="otherTransferConfirm">确认转账
+                                        </button>
+                                        <button type="reset" class="layui-btn layui-btn-primary">重置信息</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="transferDetailsPage" class="layui-tab-item">
+                <fieldset id="transferDetailCondition_wrapper" class="layui-elem-field cust-card">
+                    <legend>筛选条件</legend>
+                    <div class="layui-field-box">
+                        <form id="transferDetailCondition_form" class="layui-form">
+                            <div class="layui-form-item">
+                                <label class="layui-form-label layui-icon">开始时间 &#xe652;</label>
+                                <div class="layui-input-block">
+                                    <input type="text" id="borrowtimebox3" name="starttime" class="layui-input"
+                                           placeholder="请输入" lay-verify="required"/>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label layui-icon">截止时间 &#xe651;</label>
+                                <div class="layui-input-block">
+                                    <input type="text" id="borrowtimebox4" name="lasttime" class="layui-input"
+                                           placeholder="请输入" lay-verify="required"/>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label layui-icon">卡号 &#xe60a;</label>
+                                <div class="layui-input-block">
+                                    <select id="cardNumberOfDetails" name="cardnumber" class="layui-input"
+                                            placeholder="请输入" lay-verify="required">
+                                        <option value="">请选择</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <div class="layui-input-block">
+                                    <button class="layui-btn" lay-submit lay-filter="transferDetailSearch">立即提交</button>
+                                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </fieldset>
+                <div class="list-wrapper" id="detailtable">
+                    <table id="detaillist" lay-filter="detaillist"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="../../components/core-min.js"></script>
+<script src="../../components/sha256.js"></script>
+<script src="../../rsa.js"></script>
+<script src="../../aes.js"></script>
+<script src="../../layui/layui.js"></script>
+<script>
+
+    layui.use(['jquery', 'form', 'element', 'table', 'carousel', 'laydate', 'layer'], function () {
+        $ = layui.jquery;
+        var element = layui.element;
+        var table = layui.table;
+        var carousel = layui.carousel;
+        var form = layui.form;
+        var layer = layui.layer;
+
+        var laydate = layui.laydate;
+
+        var otherTransferIndex;
+        var personalTransferIndex;
+        //时间戳的处理
+        layui.laytpl.toDateString = function (d, format) {
+            var date = new Date(d || new Date())
+                , ymd = [
+                this.digit(date.getFullYear(), 4)
+                , this.digit(date.getMonth() + 1)
+                , this.digit(date.getDate())
+            ]
+                , hms = [
+                this.digit(date.getHours())
+                , this.digit(date.getMinutes())
+                , this.digit(date.getSeconds())
+            ];
+
+            format = format || 'yyyy-MM-dd HH:mm:ss';
+
+            return format.replace(/yyyy/g, ymd[0])
+                .replace(/MM/g, ymd[1])
+                .replace(/dd/g, ymd[2])
+                .replace(/HH/g, hms[0])
+                .replace(/mm/g, hms[1])
+                .replace(/ss/g, hms[2]);
+        };
+
+        //数字前置补零
+        layui.laytpl.digit = function (num, length, end) {
+            var str = '';
+            num = String(num);
+            length = length || 2;
+            for (var i = num.length; i < length; i++) {
+                str += '0';
+            }
+            return num < Math.pow(10, length) ? str + (num | 0) : num;
+        };
+
+        //选择起止时间layer
+        laydate.render({     //创建时间选择框
+            elem: '#borrowtimebox'
+        });
+        laydate.render({     //创建时间选择框
+            elem: '#borrowtimebox1'
+        });
+        laydate.render({     //创建时间选择框
+            elem: '#borrowtimebox3'
+        });
+        laydate.render({     //创建时间选择框
+            elem: '#borrowtimebox4'
+        });
+
+        //建造实例
+        carousel.render({
+            elem: '#roller'
+            , width: '100%' //设置容器宽度
+            , arrow: 'always' //始终显示箭头
+            , height: '200px'
+            //,anim: 'updown' //切换动画方式
+        });
+
+        //加载select
+        $.ajax({
+            async: false,
+            type: 'POST',
+            url: '/cardListSelect',
+            dataType: 'json',
+            success: function (data) {
+                $("#cardNumberOfDetails").html("");
+                $("#personalPayAccount").html("");
+                $("#otherPayAccount").html("");
+
+                $("#cardNumberOfDetails").append('<option value="">请选择</option>');
+                $("#personalPayAccount").append('<option value="">请选择</option>');
+                $("#otherPayAccount").append('<option value="">请选择</option>');
+                form.render('select');
+
+                $.each(data.data, function (key, val) {
+                    var option1 = '<option value="' + val.accountNumber + '">' + val.accountNumber + '</option>';
+                    $("#cardNumberOfDetails").append(option1);
+                    $("#personalPayAccount").append(option1);
+                    $("#otherPayAccount").append(option1);
+                    form.render('select');
+                });
+            }
+        });
+
+        $.ajax({
+            async: false,
+            type: 'POST',
+            url: '/getStatus',
+            dataType: 'json',
+            success: function (data) {
+                $("#logType").html("");
+
+                // $("#logType").append('<option value="">请选择</option>');
+
+                form.render('select');
+
+                $.each(data.status, function (key, val) {
+                    var option1 = '<option value="' + val + '">' + val + '</option>';
+                    $("#logType").append(option1);
+                    form.render('select');
+                });
+            }
+        });
+
+        form.on('select(personalPayAccount)', function (data) {
+            console.log("personal:" + data.value)
+            $.ajax({
+                type: 'POST',
+                url: '/cardListReceieveSelect',
+                data: {
+                    accNo: data.value
+                },
+                dataType: 'json',
+                success: function (data) {
+                    console.log("in")
+                    $("#personalReceiveAccount").html("");
+
+                    $("#personalReceiveAccount").append('<option value="">请选择</option>');
+                    form.render('select');
+
+                    console.log("on")
+                    $.each(data.data, function (key, val) {
+                        var option1 = '<option value="' + val.accountNumber + '">' + val.accountNumber + '</option>';
+                        $("#personalReceiveAccount").append(option1);
+                        form.render('select');
+                    });
+                }
+            });
+        });
+
+        //每次切换tab标签刷新表格数据
+        element.on('tab(onlineBank)', function (data) {
+            console.log("切换啦！"); //当前Tab标题所在的原始DOM元素
+            //渲染日志表格
+            table.render({
+                elem: '#loglist'
+                , height: 312//'full-100'
+                , url: '/logSearchAll' //数据接口
+                , page: true //开启分页
+                , cols: [[ //表头
+                    {field: 'lid', title: '流水号', width: 180}
+                    , {field: 'fctp', title: '类型', width: 180}
+                    , {field: 'lc', title: '时间', width: 180}
+                    , {field: 'sta', title: '状态', width: 180}
+
+                ]]
+            });
+            //渲染用户表格
+            table.render({
+                elem: '#cardlist'
+                , height: 312
+                , url: '/cardList' //数据接口
+                , page: true //开启分页
+                , cols: [[ //表头
+                    {field: 'accountNumber', title: '卡号', width: 180}
+                    , {
+                        field: 'currencyType', title: '币种', width: 180, templet: function (d) {
+                            return '人民币'
+                        }
+                    }
+                    , {field: 'balance', title: '余额', width: 180}
+                    , {fixed: 'right', width: 200, align: 'center', toolbar: '#barDemo'}
+
+                ]]
+            });
+            //渲染交易明细表
+            table.render({
+                elem: '#detaillist'
+                , height: 312
+                , url: '' //数据接口
+                , page: true //开启分页
+                , cols: [[ //表头
+                    {field: 'amount', title: '交易金额', width: 100}
+                    , {field: 'usage', title: '交易用途', width: 100}
+                    , {field: 'currency', title: '币种', width: 60}
+                    , {field: 'payeeAccountName', title: '收款人姓名', width: 100}
+                    , {field: 'payerAccountNo', title: '付款账户', width: 150}
+                    , {field: 'payeeAccountNo', title: '收款账户', width: 150}
+                    , {
+                        field: 'transTime', title: '转账时间', width: 160
+                        , templet: function (d) {
+                            if (d.transTime != null) {
+                                return layui.util.toDateString(d.transTime, 'yyyy-MM-dd HH:mm:ss')
+                            } else {
+                                return '';
+                            }
+                        }
+                    }
+
+                ]]
+            });
+        });
+
+        //渲染用户列表表格
+
+        // 提交添加账户表单
+        form.on('submit(addCount)', function () {
+
+            var cardNumber = $("#cardNumber").val();
+            var password = $("#password").val();
+
+
+            console.log(cardNumber);
+            console.log(password);
+            $.ajax({
+                type: 'POST',
+                url: '/addcard',
+                data: {
+                    cardNumber: cardNumber,
+                    password: password
+                },
+                dataType: 'json',
+                success: function (data) {
+                    console.log(data.success);
+
+                    layer.alert(data.success);
+
+                    var cardNumber = $("#cardNumber").val("");
+                    var password = $("#password").val("");
+                }
+            })
+
+            return false;
+        });
+
+
+        // 提交搜索日志条件
+        form.on('submit(logSearch)', function () {
+            var startDate = $("#borrowtimebox").val();
+            var endDate = $("#borrowtimebox1").val();
+            var logType = $("#logType  option:selected").text();
+            console.log(startDate);
+            console.log(endDate);
+            console.log(logType);
+
+
+            var option = {
+
+                url: '/logSearch' //数据接口
+                , method: 'POST'
+                , where: {
+                    startDate: startDate,
+                    endDate: endDate,
+                    logType: logType
+                }
+
+
+            };
+            table.reload('loglist', option);
+
+            return false;
+        });
+
+        //提交搜索明细条件
+        form.on('submit(transferDetailSearch)', function () {
+            var startDate = $("#borrowtimebox3").val();
+            var endDate = $("#borrowtimebox4").val();
+            var acctNo = $("#cardNumberOfDetails").val();
+            console.log(startDate);
+            console.log(endDate);
+            console.log(acctNo);
+
+            var option = {
+                url: '/transList' //数据接口
+                , method: 'POST'
+                , where: {
+                    dateFrom: startDate,
+                    dateTo: endDate,
+                    acctNo: acctNo
+                }
+            };
+            table.reload('detaillist', option);
+            return false;
+        });
+
+
+        var hiddenCode = 0;
+        table.on("tool(cardlist-table)", function (obj) {
+            var layEvent = obj.event;
+            var tr = obj.tr; //获得当前行 tr 的DOM对象
+            console.log(tr.selector)
+            var data = obj.data; //获得当前行数据
+            var cardnumber = data.accountNumber;
+            console.log(cardnumber);
+            if (layEvent === 'allowance') {
+                console.log("okokokokokok");
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/allowance',
+                    data: {
+                        cardNumber: cardnumber
+                    },
+                    dataType: 'json',
+                    success: function (result) {
+                        if (hiddenCode == 1) {
+                            obj.update({
+                                balance: ''
+                            });
+                            hiddenCode = 0;
+                            $(tr.selector+' a[name=hideAmount]').text('余额');
+                        } else {
+                            obj.update({
+                                balance: result.balance
+                            });
+                            hiddenCode = 1;
+                            $(tr.selector+' a[name=hideAmount]').text('隐藏余额');
+                        }
+
+                    }
+                });
+            }
+        });
+
+        //渲染日志查询表格
+
+        //个人转账信息确认以及提交
+        form.on('submit(personalTransferConfirm)', function () {
+            $.ajax({
+                type: 'POST',
+                url: '/sendSMS',
+                data: {},
+                dataType: 'json',
+                success: function (result) {
+                    console.log(result)
+                }
+            });
+
+            var personalTransferAccountConfirmNumber = $('#personalPayAccount option:selected').text();//付款账户
+            var personalReceiveAccountConfirm = $('#personalReceiveAccount option:selected').text();//收款账户
+            var personalTransferTypeConfirm = $('#personalTransferType option:selected').text();//转账方式（立即/2h/1d）
+            var personalTransferUsageConfirm = $('#personalTransferUsage option:selected').text()//转账用途
+            var personalTransferCommentsConfirm = $('#personalTransferComments').val();//转账附言
+            //转账类型为行内转账
+            var personalTransferAmountConfirm = $('#personalTransferAmount').val();//金额
+            var personalTransferAmountConfirmDX = DX(personalTransferAmountConfirm);
+            $('#personalTransferAccountConfirm').attr('placeholder', personalTransferAccountConfirmNumber);
+            $('#personalReceiveAccountConfirm').attr('placeholder', personalReceiveAccountConfirm);
+            $('#personalTransferTypeConfirm').attr('placeholder', personalTransferTypeConfirm);
+            $('#personalTransferUsageConfirm').attr('placeholder', personalTransferUsageConfirm);
+            $('#personalTransferCommentsConfirm').attr('placeholder', personalTransferCommentsConfirm);
+            $('#personalTransferAmountConfirm').attr('placeholder', personalTransferAmountConfirm);
+            $('#personalTransferAmountConfirmDX').attr('placeholder', personalTransferAmountConfirmDX);
+            personalTransferIndex = layer.open({
+                type: 1,
+                title: '确认个人转账信息',
+                area: ['450px', '550px'],
+                content: $('#personalTranferConfirmPage'),
+                end: function () {
+                    init();
+                }
+            });
+            form.render();
+            return false;
+        });
+        //他人转账信息确认界面
+        form.on('submit(otherTransferConfirm)', function () {
+            var password = $("#otherTransferPassWord").val();
+            var amount = $('#otherTransferAmount').val();
+            var delay = $('#otherTransferType option:selected').val();
+            var otherTransferAccountConfirmNumber = $('#otherPayAccount option:selected').text();//付款账户
+            var otherReceiveAccountConfirm = $('#otherReceiveAccount').val();//收款账户
+            var otherTransferNameConfirm = $('#otherAccountName').val();//目标账户户名
+            var otherTransferTypeConfirm = $('#otherTransferType option:selected').text();//转账方式（立即，2小时等）
+            var otherTransferUsageConfirm = $('#otherTransferUsage option:selected').text();//用途
+            var otherTransferAmountConfirm = $('#otherTransferAmount').val();//金额
+            var otherTransferAmountConfirmDX = DX(otherTransferAmountConfirm);
+            var otherTransferCommentsConfirm = $('#otherTransferComments').val();
+            $('#otherTransferAccountConfirm').attr('placeholder', otherTransferAccountConfirmNumber);
+            $('#otherReceiveAccountConfirm').attr('placeholder', otherReceiveAccountConfirm);
+            $('#otherAccountNameConfirm').attr('placeholder', otherTransferNameConfirm);
+            $('#otherTransferTypeConfirm').attr('placeholder', otherTransferTypeConfirm);
+            $('#otherTransferUsageConfirm').attr('placeholder', otherTransferUsageConfirm);
+            $('#otherTransferAmountConfirm').attr('placeholder', otherTransferAmountConfirm);
+            $('#otherTransferAmountConfirmDX').attr('placeholder', otherTransferAmountConfirmDX);
+            $('#otherTransferCommentsConfirm').attr('placeholder', otherTransferCommentsConfirm);
+
+            $.ajax({
+                async: false,
+                type: 'POST',
+                url: '/sendSMS',
+                data: {},
+                dataType: 'json',
+                success: function (result) {
+                    console.log(result)
+                }
+            });
+
+            $.ajax({
+                async: false,
+                type: 'POST',
+                url: '/firstupload',
+                data: {
+                    password: password,
+                    amount: amount,
+                    acctFrom: otherTransferAccountConfirmNumber,
+                    acctTo: otherReceiveAccountConfirm,
+                    acctToName: otherTransferNameConfirm,
+                    usage: otherTransferUsageConfirm,
+                    delay: delay,
+                    comments: otherTransferCommentsConfirm
+                },
+                dataType: 'json',
+                success: function (result) {
+                    console.log(result)
+                }
+            });
+
+            otherTransferIndex = layer.open({
+                type: 1,
+                title: '确认他人转账信息',
+                area: ['450px', '600px'],
+                content: $('#otherTranferConfirmPage'),
+                end: function () {
+                    init();
+                }
+            });
+            form.render();
+
+            return false;
+        });
+
+        //给他人转账提交数据
+        form.on('submit(otherTransferPageSubmit)', function () {
+            var password = $("#otherTransferPassWord").val();
+            var amount = $('#otherTransferAmount').val();
+            var acctFrom = $('#otherPayAccount option:selected').text();
+            var acctTo = $('#otherReceiveAccount').val();
+            var acctToName = $('#otherAccountName').val();
+            var usage = $('#otherTransferUsage option:selected').text();
+            var delay = $('#otherTransferType option:selected').text();
+            var comments = $('#otherTransferComments').val();
+            var code = $('#otherSecurityCode').val();
+
+            switch (delay) {
+                case '立即转账':
+                    delay = 0;
+                    break;
+                case '2小时':
+                    delay = 2;
+                    break;
+                case '隔天':
+                    delay = 24;
+                    break;
+                default:
+                    break;
+            }
+            var summary = password + amount + acctFrom + acctTo + acctToName + usage + delay + comments;
+            var hashsummary = CryptoJS.SHA256(summary);
+            console.log(password);
+            console.log(amount);
+            console.log(acctFrom);
+            console.log(acctTo);
+            console.log(acctToName);
+            console.log(usage);
+            console.log(delay);
+            console.log(summary);
+            console.log("hash: "+hashsummary);
+
+            $.ajax({
+                type: 'POST',
+                url: '/innertransfer',
+                data: {
+                    hashsummary:hashsummary+"",
+                    code: code,
+                    summary:summary
+                },
+                dataType: 'json',
+                success: function (data) {
+                    if (data.msg == '成功') {
+                        layer.alert("转账成功");
+                        layer.close(otherTransferIndex);
+                    } else {
+                        layer.alert(data.msg);
+                        layer.close(otherTransferIndex);
+                    }
+
+                }
+            });
+
+            return false;
+
+        });
+
+
+        //给本人转账提交数据
+        form.on('submit(personalTransferSubmit)', function () {
+            var password = $("#personalTransferPassWord").val();
+            var amount = $('#personalTransferAmount').val();
+            var acctFrom = $('#personalPayAccount option:selected').text();
+            var acctTo = $('#personalReceiveAccount option:selected').val();
+            var usage = $('#personalTransferUsage option:selected').text();
+            var delay = $('#personalTransferType option:selected').text();
+            var comments = $('#personalTransferComments').val();
+            var code = $('#personalSecurityCode').val();
+            switch (delay) {
+                case '立即转账':
+                    delay = 0;
+                    break;
+                case '2小时':
+                    delay = 2;
+                    break;
+                case '隔天':
+                    delay = 24;
+                    break;
+                default:
+                    break;
+            }
+
+            console.log(password);
+            console.log(amount);
+            console.log(acctFrom);
+            console.log(acctTo);
+            console.log(usage);
+            console.log(delay);
+            console.log(comments);
+
+            $.ajax({
+                type: 'POST',
+                url: '/innertransferself',
+                data: {
+                    password: password,
+                    amount: amount,
+                    acctFrom: acctFrom,
+                    acctTo: acctTo,
+                    usage: usage,
+                    delay: delay,
+                    comments: comments,
+                    code: code
+                },
+                dataType: 'json',
+                success: function (data) {
+                    if (data.msg == '成功') {
+                        layer.alert("转账成功");
+                        layer.close(personalTransferIndex);
+                    } else {
+                        layer.alert(data.msg);
+                        layer.close(personalTransferIndex);
+                    }
+
+                }
+            });
+
+            return false;
+
+        });
+
+
+        form.verify({
+            account: function (value) {
+                if (value.trim() == "") {
+                    return "账号不能为空"
+                }
+                if (!/^\d{16}$/.test(value)) {
+                    return "账号为16位数字";
+                }
+            },
+            code: function (value) {
+                if (value.trim() == "") {
+                    return "验证码不能为空"
+                }
+                if (!/^\d{4}$/.test(value)) {
+                    return "验证码为4位数字";
+                }
+            },
+            paymentpassword: function (value) {
+                if (value.trim() == "") {
+                    return "交易密码不能为空"
+                }
+                if (!/^\d{6}$/.test(value)) {
+                    return "交易密码为6位数字";
+                }
+            },
+            amount: function (value) {
+                if (value.trim() == "") {
+                    return "支付金额不能为空"
+                }
+                if (!/^[0-9]+(.[0-9]+)?$/.test(value)) {
+                    return "支付金额为最多两位小数的数字";
+                }
+            },
+        });
+
+        //汉字转换
+        function DX(n) {
+            if (!/^(0|[1-9]\d*)(\.\d+)?$/.test(n))
+                return "数据非法";
+            var unit = "千百拾亿千百拾万千百拾元角分", str = "";
+            n += "00";
+            var p = n.indexOf('.');
+            if (p >= 0)
+                n = n.substring(0, p) + n.substr(p + 1, 2);
+            unit = unit.substr(unit.length - n.length);
+            for (var i = 0; i < n.length; i++)
+                str += '零壹贰叁肆伍陆柒捌玖'.charAt(n.charAt(i)) + unit.charAt(i);
+            return str.replace(/零(千|百|拾|角)/g, "零").replace(/(零)+/g, "零").replace(/零(万|亿|元)/g, "$1").replace(/(亿)万|壹(拾)/g, "$1$2").replace(/^元零?|零分/g, "").replace(/元$/g, "元整");
+        }
+
+
+    });
+
+    function init() {
+        layui.use(['form','jquery'], function () {
+            var form = layui.form;
+            $ = layui.jquery;
+            $("#personalTransferPassWord").val("");
+            $('#personalTransferAmount').val("");
+            $('#personalPayAccount option:first').attr("selected",true);
+            $('#personalReceiveAccount option:first').attr("selected",true);
+            $('#personalTransferUsage option:first').attr("selected",true);
+            $('#personalTransferType option:first').attr("selected",true);
+            $('#personalTransferComments').val("");
+            $('#personalSecurityCode').val("");
+            $('#personalTransferAccountConfirm').attr('placeholder', "");
+            $('#personalReceiveAccountConfirm').attr('placeholder', "");
+            $('#personalTransferTypeConfirm').attr('placeholder', "");
+            $('#personalTransferUsageConfirm').attr('placeholder', "");
+            $('#personalTransferCommentsConfirm').attr('placeholder', "");
+            $('#personalTransferAmountConfirm').attr('placeholder', "");
+            $('#personalTransferAmountConfirmDX').attr('placeholder', "");
+
+            $('#otherTransferAccountConfirm').attr('placeholder', "");
+            $('#otherReceiveAccountConfirm').attr('placeholder', "");
+            $('#otherAccountNameConfirm').attr('placeholder', "");
+            $('#otherTransferTypeConfirm').attr('placeholder', "");
+            $('#otherTransferUsageConfirm').attr('placeholder', "");
+            $('#otherTransferAmountConfirm').attr('placeholder', "");
+            $('#otherTransferAmountConfirmDX').attr('placeholder', "");
+            $('#otherTransferCommentsConfirm').attr('placeholder', "");
+            $("#otherTransferPassWord").val("");
+            $('#otherTransferAmount').val("");
+            $('#otherPayAccount option:first').attr("selected",true);
+            $('#otherReceiveAccount').val("");
+            $('#otherAccountName').val("");
+            $('#otherTransferUsage option:first').attr("selected",true);
+            $('#otherTransferType option:first').attr("selected",true);
+            $('#otherTransferComments').val("");
+            $('#otherSecurityCode').val("");
+            form.render();
+        })
+    }
+</script>
+
+<script type="text/html" id="barDemo">
+    <a name="hideAmount" class="layui-btn layui-btn-xs" lay-event="allowance">余额</a>
+</script>
+
+</html>
